@@ -28,6 +28,12 @@
         <?= $links; ?>
     </div>
     <div style="text-align: center;">
+        <input type="button" onclick="addNews()" style="float:left;" value="新增文章"></button>
         <input type="submit" value="確定修改">
     </div>
 </form>
+<script>
+    function addNews(){
+        location.href="?do=add_news";
+    }
+</script>
