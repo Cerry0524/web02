@@ -62,4 +62,8 @@ class News extends DB
         }
         $this->save($row);
     }
+    function popshow()
+    {
+        return $this->paginate(5, " where `sh`=1 order by `goods` desc");
+    }
 }
