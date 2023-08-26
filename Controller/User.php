@@ -7,43 +7,50 @@ class User extends DB
     {
         parent::__construct('user');
     }
-    function backend(){
-        $view=[
-            'rows'=>$this->all(),
+    function backend()
+    {
+        $view = [
+            'rows' => $this->all(),
         ];
-        return $this->view("./view/backend/user.php",$view);
+        return $this->view("./view/backend/user.php", $view);
     }
-    function login($user){
+    function login($user)
+    {
         // dd($user);
-        $chk=$this->count(['acc'=>$user['acc']]);
-        if($chk){
-            $chk=$this->find($user);
-            if($chk){
-                $_SESSION['user']=$user['acc'];
-                return 1;
-            }else{
+        $chk = $this->count(['acc' => $user['acc']]);
+        if ($chk) {
+            $chk = $this->find($user);
+            if ($chk) {
+                $_SESSION['user'] = $user['acc'];
+                if ($user['acc'] == 'admin') {
+                    return 4;
+                } else {
+                    return 1;
+                }
+            } else {
                 return 2;
             }
-
-        }else{
+        } else {
             return 0;
         }
     }
-    function forgot($email){
-        $chk=$this->count(['email'=>$email]);
-        if($chk){
-            return $this->find(['email'=>$email])['pw'];
-        }else{
+    function forgot($email)
+    {
+        $chk = $this->count(['email' => $email]);
+        if ($chk) {
+            return $this->find(['email' => $email])['pw'];
+        } else {
             return "查無此資料";
         }
     }
-    function reg($user){
+    function reg($user)
+    {
         // dd($user);
-        $chk=$this->count(['acc'=>$user['acc']]);
-        if(!$chk){
+        $chk = $this->count(['acc' => $user['acc']]);
+        if (!$chk) {
             $this->save($user);
             return 1;
-        }else{
+        } else {
             return 0;
         }
     }

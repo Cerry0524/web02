@@ -13,4 +13,5 @@ class News extends DB
         ];
         return $this->view("./view/backend/news.php",$view);
     }
+    
 }

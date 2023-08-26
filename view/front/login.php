@@ -32,9 +32,6 @@
         $.post("./api/login.php", user, (res) => {
             console.log(res);
             switch (parseInt(res)) {
-                case 1:
-                    location.href = "backend.php";
-                    break;
                 case 0:
                     alert("查無帳號");
                     location.href = "?do=login";
@@ -43,6 +40,13 @@
                     alert("密碼錯誤");
                     location.href = "?do=login";
                     break;
+                case 1:
+                    location.href = "index.php";
+                    break;
+                case 4:
+                    location.href = "backend.php";
+                    break;
+
             }
         })
     }

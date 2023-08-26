@@ -38,19 +38,35 @@
 						<marquee>請民眾踴躍投稿電子報，讓電子報成為大家相互交流、分享的園地！詳見最新文章。</marquee>
 					</div>
 					<span style="width:25%; display:inline-block;">
-						<a href="?do=login">會員登入</a>
+						<?php
+						if (isset($_SESSION['user'])) {
+							echo "歡迎，" . $_SESSION['user'];
+							if ($_SESSION['user'] == 'admin') {
+						?>
+								<button onclick="location.href='backend.php'">管理</button>
+							<?php
+							}
+							?>
+							<button onclick="location.href='./api/logout.php'">登出</button>
+						<?php
+						} else {
+						?>
+							<a href="?do=login">會員登入</a>
+						<?php
+						}
+						?>
 					</span>
 				</div>
 				<div class="">
 					<?php
-					$do=$_GET['do']??'main';
-					$file="./view/backend/{$do}.php";
-					$table=ucfirst($do);
-					if(isset($$table)){
+					$do = $_GET['do'] ?? 'main';
+					$file = "./view/backend/{$do}.php";
+					$table = ucfirst($do);
+					if (isset($$table)) {
 						$$table->backend();
-					}else if(file_exists($file)){
+					} else if (file_exists($file)) {
 						include $file;
-					}else{
+					} else {
 						include "./view/backend/main.php";
 					}
 					?>
