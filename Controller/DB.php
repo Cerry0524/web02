@@ -30,7 +30,7 @@ class DB
                 $sql .= $arg[0];
             }
         }
-        if (is_array($arg[1])) {
+        if (isset($arg[1])) {
             $sql .= $arg[1];
         }
         return $sql;
@@ -74,12 +74,13 @@ class DB
             $keys = array_keys($arg);
             $sql = "insert into $this->table (`" . join("`,`", $keys) . "`) values ('" . join("','", $arg) . "')";
         }
-        return $this->pdo->query($sql)->fetchColumn();
+        return $this->pdo->exec($sql);
     }
     protected function math($math, $col, ...$arg)
     {
         $sql = $this->sql_all("select $math($col) from $this->table ", ...$arg);
-        return $this->pdo->exec($sql);
+        // echo $sql;
+        return $this->pdo->query($sql)->fetchColumn();
     }
     function sum($col,...$arg){
         return $this->math('sum',$col,...$arg);
