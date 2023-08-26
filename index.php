@@ -64,7 +64,7 @@
 					$table = ucfirst($do);
 					if (isset($$table)) {
 						$$table->front();
-					} else if (file_exists($file)) {
+					} else if (file_exists($file) && $do!='main') {
 						include $file;
 					} else {
 						include "./view/front/main.php";
