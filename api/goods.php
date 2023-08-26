@@ -1,3 +1,4 @@
 <?php
 include_once "../base.php";
-echo $News->list($_POST['type']);
+
+echo $Log->goods($_POST['id']);

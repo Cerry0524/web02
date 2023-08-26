@@ -47,7 +47,7 @@
 							<?php
 							}
 							?>
-							<button  onclick="location.href='./api/logout.php'">登出</button>
+							<button onclick="location.href='./api/logout.php'">登出</button>
 						<?php
 						} else {
 						?>
@@ -61,10 +61,8 @@
 					<?php
 					$do = $_GET['do'] ?? 'main';
 					$file = "./view/front/{$do}.php";
-					$table = ucfirst($do);
-					if (isset($$table)) {
-						$$table->front();
-					} else if (file_exists($file) && $do!='main') {
+
+					if (file_exists($file) && $do != 'main') {
 						include $file;
 					} else {
 						include "./view/front/main.php";

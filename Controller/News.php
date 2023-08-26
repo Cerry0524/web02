@@ -45,4 +45,8 @@ class News extends DB
         echo "</pre>";
         echo "</div>";
     }
+    function show()
+    {
+        return $this->paginate(5, " where `sh`=1 order by `id` desc");
+    }
 }

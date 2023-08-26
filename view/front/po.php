@@ -37,7 +37,7 @@
     function list(type) {
         // console.log($(this));
         $("#header").text($(".nav").eq(type).text());
-        $.get("./api/list.php", {
+        $.post("./api/list.php", {
             type
         }, (list) => {
             $("#lists").html(list);

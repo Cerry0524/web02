@@ -53,6 +53,7 @@ class DB
     function count(...$arg)
     {
         $sql = $this->sql_all(" select count(*) from $this->table ", ...$arg);
+        // echo $sql;
         return $this->pdo->query($sql)->fetchColumn();
     }
     function find($arg)
