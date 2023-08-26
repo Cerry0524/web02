@@ -49,4 +49,17 @@ class News extends DB
     {
         return $this->paginate(5, " where `sh`=1 order by `id` desc");
     }
+    function chageGood($id, $res)
+    {
+        $row = $this->find($id);
+        switch ($res) {
+            case '1':
+                $row['goods']++;
+                break;
+            case '0':
+                $row['goods']--;
+                break;
+        }
+        $this->save($row);
+    }
 }

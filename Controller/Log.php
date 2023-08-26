@@ -19,8 +19,10 @@ class Log extends DB
         $chk = $this->count(['user' => $_SESSION['user'],'news_id' => $id, ]);
         if ($chk) {
             $this->del(['news_id' => $id, 'user' =>  $_SESSION['user']]);
+            return 0;
         } else {
             $this->save(['news_id' => $id, 'user' =>  $_SESSION['user']]);
+            return 1;
         }
     }
     function showGoods($news){

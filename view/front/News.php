@@ -45,7 +45,8 @@
         $.post("./api/goods.php", {
             id
         }, (res) => {
-            // console.log(res);
+            console.log(res);
+            $.post("./api/change_good.php", {id,res})
             location.reload();
         })
     }
