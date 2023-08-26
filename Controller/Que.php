@@ -9,7 +9,9 @@ class Que extends DB
     }
     function backend(){
         $view=[
-            'rows'=>$this->all(),
+            'rows'=>$this->paginate(5,['subject_id'=>0]),
+            'links'=>$this->links(),
+            'start'=>$this->links['start']+1,
         ];
         return $this->view("./view/backend/que.php",$view);
     }
