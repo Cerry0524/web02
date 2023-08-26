@@ -11,7 +11,7 @@
         <?php
         $rows = $Que->all(['subject_id' => 0]);
         foreach ($rows as $idx => $row) {
-            $vote=$Que->sum('vote',['subject_id' => $row['id']]);
+            $vote = $Que->sum('vote', ['subject_id' => $row['id']]);
         ?>
             <tr>
                 <td>
@@ -27,7 +27,15 @@
                     <a href="?do=result&id=<?= $row['id']; ?>">結果</a>
                 </td>
                 <td>
-                    <a href="?do=vote&id=<?= $row['id']; ?>">參與投票</a>
+                    <?php
+                    if (isset($_SESSION['user'])) {
+                    ?>
+                        <a href="?do=vote&id=<?= $row['id']; ?>">參與投票</a>
+                    <?php
+                    }else{
+                        echo "請先登入";
+                    }
+                    ?>
                 </td>
             </tr>
         <?php

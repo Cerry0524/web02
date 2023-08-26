@@ -37,6 +37,5 @@
             location.href="?do=result&id="+res;
         });
 
-        
     }
 </script>
