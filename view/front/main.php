@@ -37,9 +37,9 @@
 <div class="posts">
     <pre>
     <?php
-    for ($i = 1; $i <= 4; $i++) {
+    for ($i = 0; $i < 4; $i++) {
     ?>
-            <div class="post <?= ($i == 1) ? "post-select" : ""; ?>">
+            <div class="post <?= ($i == 0) ? "post-select" : ""; ?>">
                 <h2><?= $News->type($i); ?></h2>
                 <span><?= $News->find(['type' => $i])['title']; ?>
                 <?= $News->find(['type' => $i])['text']; ?></span>
