@@ -19,3 +19,6 @@ function good(id,type,user)
 		}
 	})
 }
+function clearall(){
+	$("input[type='text'],input[type='password'],input[type='number'],input[type='selected']").val("");
+}
