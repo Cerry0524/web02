@@ -13,4 +13,10 @@ class Que extends DB
         ];
         return $this->view("./view/backend/que.php",$view);
     }
+    function vote($id){
+        $row=$this->find($id);
+        $row['vote']++;
+        $this->save($row);
+        return $row['subject_id'];
+    }
 }
