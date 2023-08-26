@@ -10,7 +10,9 @@ class News extends DB
     function backend()
     {
         $view = [
-            'rows' => $this->all(),
+            'rows' => $this->paginate(3),
+            'links'=>$this->links(),
+            'start'=>$this->links['start']+1,
         ];
         return $this->view("./view/backend/news.php", $view);
     }
